@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div id="app" class="container">
+      <div class="form-inline justify-content-end my-4">
+        <div class="form-group">
+          <label for="param small">Parameter</label>
+          <select v-model="param" id="param" class="ml-2 form-control form-control-sm" @change="update_bank_date">
+            <option value="deposits">Deposits</option>
+            <option value="cards_issued">RuPay Cards issued</option>
+            <option value="urban">Urban Beneficiaries</option>
+            <option value="rural">Rural/Semi-urban Beneficiaries</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4" v-for="type in _.keys(banks).sort()">
+          <p class="h6">{{ type }}</p>
+          <bar-chart :data="bank_deposit(type)" height="60vh"></line-chart>
+        </div>
+      </div>
+
+      <div class="form-inline justify-content-end my-4">
+        <div class="form-group mr-2">
+          <label for="bank small mx-2">Bank</label>
+          <select id="bank" class="ml-2 form-control form-control-sm" v-model="bank" @change="update_bank_date">
+            <optgroup v-for="(item, key) in banks" :label="key">
+              <option :value="bank" v-for="bank in item">{{ bank }}</option>
+            </optgroup>
+          </select>
+        </div>
+
+      </div>
+      <div class="row mb-4">
+        <div class="col">
+          <line-chart :data="bank_date"></line-chart>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
+    <script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js"></script>
+    <script src="https://unpkg.com/vue-chartkick@0.5.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.6.3/papaparse.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
