@@ -1,3 +1,6 @@
 [submodule "pmjdy"]
 	path = pmjdy
 	url = https://github.com/datameet-pune/pmjdy.git
+[submodule "rhn19-pmjdy"]
+	path = rhn19-pmjdy
+	url = https://github.com/rhn19/opendatapune-pmjdy.git

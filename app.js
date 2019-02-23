@@ -68,7 +68,7 @@ app = new Vue({
     var header = this.raw.shift();
     var data = this.data
 
-    Papa.parse('pmjdy/data/data.csv', {
+    Papa.parse('rhn19-pmjdy/cleaned_datasets/combined_cleaned_data.csv', {
       download: true,
       complete (data) {
         data.data.shift();
